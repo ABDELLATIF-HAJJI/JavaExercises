@@ -1,3 +1,38 @@
+const inputAge = document.querySelector('#byDays');
+const subButton = document.querySelector('#submitB');
+const outputresults = document.querySelector('#screenOperation');
+
+
+
+
+function days(age){
+const ageByDays = age * 365;
+return ageByDays;
+}
+const Day = days(20);
+
+function Hours(age){
+const ageByHours = age * 24;
+return ageByHours;
+}
+const hoursA = Hours(days);
+console.log(hoursA)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //second Calculator///////////////////////////////////////////////////////
 
 const screenTotal = document.getElementById ('screenResulats')
