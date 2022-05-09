@@ -1,45 +1,50 @@
-const inputAge = document.querySelector('#byDays');
-const subButton = document.querySelector('#submitB');
 const outputresults = document.querySelector('#screenOperation');
 
+const screenAge =document.createElement('button');
+screenAge.className = 'screenAge';
+outputresults.appendChild(screenAge);
 
+const screenHour =document.createElement('button')
+screenHour.className = 'screenHour';
+outputresults.appendChild(screenHour);
 
+const subButton = document.querySelector('#submitB');
+const inputAge = document.querySelector('#inputAge');
 
 function days(age){
-const ageByDays = age * 365;
-return ageByDays;
+    const ageByDays = age * 365;
+    return ageByDays;
 }
-const Day = days(20);
+
+let resultDays = days(1)
 
 function Hours(age){
-const ageByHours = age * 24;
-return ageByHours;
+    const ageByhours = age * 24;
+    return ageByhours;
 }
-const hoursA = Hours(days);
-console.log(hoursA)
+let resultHours = Hours(resultDays);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+subButton.addEventListener('click', (e)=>{
+    let input = inputAge.value;
+    screenAge.innerHTML = 'Days:'+' '+ resultDays;
+    screenHour.innerHTML = 'Hours:'+' '+ resultHours;
+    
+    if (input === ''){
+        screenAge.style.display='block';
+        screenHour.style.display='block';
+    }
+    else {
+        e.preventDefault()
+    }
+})
 
 //second Calculator///////////////////////////////////////////////////////
 
-const screenTotal = document.getElementById ('screenResulats')
-const first = document.getElementById ('firstInput')
-const operation = document.getElementById ('symlolInput')
-const second = document.getElementById ('secondInput')
-const buttonTotal = document.getElementById ('equalInput')
+const screenTotal = document.getElementById ('screenResulats');
+const first = document.getElementById ('firstInput');
+const operation = document.getElementById ('symlolInput');
+const second = document.getElementById ('secondInput');
+const buttonTotal = document.getElementById ('equalInput');
 
 buttonTotal.addEventListener('click', function() {
     const one = parseInt(first.value);
@@ -67,8 +72,6 @@ function specificInput (e){
 }
 const functionedFirst = first.addEventListener('keydown',specificInput);
 const functionedSecond = second.addEventListener('keydown',specificInput);
-
-
 //Accessoires'////////////////////////////////////////////////////////////////////////////////////////
 
 function Fernitures(price, taxe, other){
@@ -88,27 +91,23 @@ document.getElementById('pricePhone').innerHTML=phone;
 const smartWatch = Fernitures(60,0,0)
 document.getElementById('priceSmart').innerHTML=smartWatch;
 
-
-
-// second-calculator////////////////////////////////////////////////////////////////////////////
+// last-calculator////////////////////////////////////////////////////////////////////////////
 
 const firstContainer = document.createElement('div')
 firstContainer.className = 'firstDiv';
 firstContainer.id = 'firstDivid';
 document.body.append(firstContainer);
 
-
 const firstEle = document.createElement('button')
 firstEle.className = 'firstEleClass';
 firstEle.id = 'firstEleid';
-firstEle.textContent = '4';
+firstEle.textContent = '10';
 firstContainer.appendChild(firstEle);
-
 
 const secondEle = document.createElement('button');
 secondEle.className = 'secondEleClass';
 secondEle.id = 'thirdN';
-secondEle.textContent = '2';
+secondEle.textContent = '5';
 firstContainer.appendChild(secondEle);
 
 const operation2 = document.createElement('span');

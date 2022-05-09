@@ -1,17 +1,34 @@
-#byDays{
-    width: 100px;
-    margin: 5px 0px 5px 5px;
+#inputAge{
+   width: 100px;
+   margin: 5px 0px 5px 5px;
 }
 #screenOperation{
-border: solid 1px black;
-background-color: rgb(202, 209, 226);
-width: 110px;
-height: 50px;
-margin: 5px;
+   border: solid 1px black;
+   background-color: rgb(202, 209, 226);
+   min-width: 27%;
+   margin-left: 5px;
+   height: 50px;
 }
+.screenAge{
+   border: solid 1px black;
+   min-width: 100px;
+   height: 18px;
+   margin: 2px;
+   background-color: chartreuse;
+   
+}
+.screenHour{
+   border: solid 1px black;
+   min-width: 100px;
+   height: 18px;
+   margin: 2px;
+   background-color: aquamarine;
+}
+
+/* secont Exercise  */
 .inputN{
-    width: 35px;
-    text-align: center;
+   width: 35px;
+   text-align: center;
 }
 .equalSymbol{
    min-width: 40px;
@@ -40,10 +57,10 @@ img{
    padding-bottom: 0x;
    min-width: 30px;
    height: 15px;
-  flex-wrap: wrap;
-  font-size: 8px;
-  font-weight: bolder;
-  background-color: rgb(46, 42, 42);
-  color: white;
-  border-radius: 10%;
+   flex-wrap: wrap;
+   font-size: 8px;
+   font-weight: bolder;
+   background-color: rgb(46, 42, 42);
+   color: white;
+   border-radius: 10%;
 }
