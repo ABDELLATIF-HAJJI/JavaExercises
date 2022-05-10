@@ -1,37 +1,50 @@
 const outputresults = document.querySelector('#screenOperation');
 
-const screenAge =document.createElement('button');
-screenAge.className = 'screenAge';
-outputresults.appendChild(screenAge);
+const screenDays =document.createElement('button');
+screenDays.className = 'subscreens';
+outputresults.appendChild(screenDays);
+screenDays.style.backgroundColor='aquamarine';
 
-const screenHour =document.createElement('button')
-screenHour.className = 'screenHour';
-outputresults.appendChild(screenHour);
+const screenHours =document.createElement('button')
+screenHours.className = 'subscreens';
+outputresults.appendChild(screenHours);
+screenHours.style.backgroundColor='#FFA07A';
+
+const screenMinutes =document.createElement('button')
+screenMinutes.className = 'subscreens';
+outputresults.appendChild(screenMinutes);
 
 const subButton = document.querySelector('#submitB');
-const inputAge = document.querySelector('#inputAge');
+const inputAge = document.querySelector('#inputAge')
+inputAge.addEventListener('keydown',specificInput);
 
-function days(age){
+function Days(age){
     const ageByDays = age * 365;
     return ageByDays;
 }
-
-let resultDays = days(1)
-
 function Hours(age){
     const ageByhours = age * 24;
     return ageByhours;
 }
-let resultHours = Hours(resultDays);
-
-subButton.addEventListener('click', (e)=>{
+function Second(age){
+    const ageByMinutes  = age * 60;
+    return ageByMinutes;
+}
+subButton.addEventListener('click',(e)=>{
     let input = inputAge.value;
-    screenAge.innerHTML = 'Days:'+' '+ resultDays;
-    screenHour.innerHTML = 'Hours:'+' '+ resultHours;
+    
+    screenDays.innerHTML = 'Days:'+'__'+ Days(input);
+    let resultDays = Days(input);
+    
+    screenHours.innerHTML = 'Hours:'+'__'+ Hours(resultDays);
+    let resultHours = Hours(resultDays);
+
+    screenMinutes.innerHTML = 'Minutes:'+'__'+ Second(resultHours);
     
     if (input === ''){
-        screenAge.style.display='block';
-        screenHour.style.display='block';
+        screenDays.style.display='none';
+        screenHours.style.display='none';
+        screenMinutes.style.display='none';
     }
     else {
         e.preventDefault()
@@ -72,6 +85,7 @@ function specificInput (e){
 }
 const functionedFirst = first.addEventListener('keydown',specificInput);
 const functionedSecond = second.addEventListener('keydown',specificInput);
+
 //Accessoires'////////////////////////////////////////////////////////////////////////////////////////
 
 function Fernitures(price, taxe, other){
