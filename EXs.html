@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Servey</h1>
+    <p>choose your interest:</p>
+    <form action="">
+        <input class="inputClass" type="checkbox" id="firstCheckbox" name="programming" value="programming">
+        <label for="programming"> programming</label><br>
+        <input class="inputClass" type="checkbox" id="secondCheckbox" name="programming" value="programming">
+        <label  for="programming"> Music</label><br>
+        <input class="inputClass" type="checkbox" id="thirdCheckbox" name="programming" value="programming">
+        <label for="programming"> Art </label><br>
+        <button id="event">Only allow one answer</button>
+    </form>
+    <hr>
+    <section style="display: block;">
+        <h2>Shape Changer</h2>
+        <div
+          id="shape"
+          style="width: 100px; height: 100px; border: 1px solid black"
+        ></div>
+        <br />
+        <input id="slider" type="range" onchange="changeSlider()" />
+      </section>
+    <hr>
+    <h1>Secret Info</h1>
+    <form action="">
+        <label for="Name"> bank name</label>
+        <input class="inputInfo" type="text" id="firstInput" name="Name"><br>
+        <label for="Account"> Account</label>
+        <input class="inputInfo" type="text" id="secondInpt" name="Location"><br>
+        <label for="Location"> Location</label>
+        <input class="inputInfo" type="text" id="thirdInput" name="Location"><br>
+        <button id="hideBt">hide</button>
+    </form>
+    <hr>
+    <h1>Todos</h1>
+    <div id="dropEle">
+        <ol>
+            <li>Study DOM manipulatin</li>
+            <li>Learn FETCH</li>
+        </ol>
+    </div>
+    <button id="Uncomplete">Uncomplete All</button>
+    <script>
+        
+        /// Ex 1
+  const events = document.getElementById('event');
+  events.addEventListener('click',hideEle )
+function hideEle(e) {
+    const inputs = Array.from(document.querySelectorAll('.inputClass')) 
+    events.style.display = 'none';
+    e.preventDefault()
+   const mapedinputes = inputs.map(element => element.type = 'radio')
+}
+
+     /// Ex 2
+     const slider = document.querySelector("#slider");
+    slider.addEventListener("change", changeSlider)
+    function changeSlider() {
+    const shape = document.querySelector("#shape");
+    shape.style.borderRadius = `${slider.value}px`;
+}
+
+    /// Ex 3
+    const hide = document.getElementById('hideBt').addEventListener('click',InvisibleInput )
+    
+    
+function InvisibleInput(e) {
+    let toggleInputs = document.querySelectorAll('.inputInfo')
+    let inputs = Array.from(toggleInputs) 
+    const mapIn = inputs.map(item => item.type = 'password')
+    e.preventDefault()
+}
+    /// Ex 4
+const Uncomplete = document.getElementById('Uncomplete');
+const UncompleteFun = document.getElementsByTagName('li')
+
+Uncomplete.onclick = function () {
+    let inputsfun = Array.from(UncompleteFun); 
+    const LineThrough = inputsfun.map(el=>
+    el.style.setProperty("text-decoration", "line-through"))
+}
+   
+    </script>
+</body>
+</html>

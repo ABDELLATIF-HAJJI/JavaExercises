@@ -1,0 +1,246 @@
+<html lang="en">
+
+
+<script>
+
+    /** SETTING SPECIE CONSTANTS **/
+    const PLANT = 'plant';
+    const THUNDER = 'thunder';
+    const WATER = 'water';
+    const FIRE = 'fire';
+    const WIND = 'wind';
+
+    /** SETTING POKEMON ARRAY **/
+    const pokemonArray = [
+      {name: 'Bulbasour', specie: PLANT, attack: 200, health: 450},
+      {name: 'Roselia', specie: PLANT, attack: 220, health: 460},
+      {name: 'Budew', specie: PLANT, attack: 180, health: 600},
+
+      {name: 'Pikachu', specie: THUNDER, attack: 150, health: 500},
+      {name: 'Pichu', specie: THUNDER, attack: 180, health: 550},
+      {name: 'Magnetite', specie: THUNDER, attack: 200, health: 530},
+
+      {name: 'Magikarp', specie: WATER, attack: 260, health: 490},
+      {name: 'Psyduck', specie: WATER, attack: 270, health: 520},
+      {name: 'Lapras', specie: WATER, attack: 280, health: 560},
+
+      {name: 'Charizard', specie: FIRE, attack: 200, health: 530},
+      {name: 'Vulpix', specie: FIRE, attack: 210, health: 520},
+      {name: 'Ponyta', specie: FIRE, attack: 230, health: 550},
+
+      {name: 'Butterfree', specie: WIND, attack: 200, health: 490},
+      {name: 'Fearow', specie: WIND, attack: 190, health: 480},
+      {name: 'Pidgey', specie: WIND, attack: 180, health: 485},
+    ];
+
+
+//////////////////////////***2***//////////////////////////////
+// Make a function that returns every Pokemon for a given specie.
+
+  const mapedBySpecie = pokemonArray.filter(item=>{
+    return item.specie 
+  })
+  console.log(mapedBySpecie)
+
+  const newFun = specie=>{
+    return pokemonArray.filter(ele=>{
+     return ele.specie === specie
+    })
+  }
+  console.log(newFun(WIND))
+//////////////////////////////****3***/////////////////////////
+   // Make a function that returns an array with every Pokemon's name.
+    const getName = pokemonArray.map(item=>{
+      return item.name
+    })
+    console.log(getName)
+///////////////////////////////****4***/////////////////////
+// Make a function that return the Pokemon with the highest attack.
+
+const mapedByattack = pokemonArray.map(item=>{
+  return item.attack
+})
+function highestattack(values) {
+  let highest = 0;
+  for (let i=0; i<values.length; i+=1) {
+    if (values[i] > highest) {
+      highest = values[i];
+    }
+  }
+  return highest;
+}
+console.log(highestattack(mapedByattack))
+console.log(Math.max(...mapedByattack))
+/*
+const highestat = pokemonArray.reduce((acc,cur)=>{
+  return acc.attack > cur.attack ? acc : cur;
+});
+console.log(highestat)*/
+
+
+//////////////////////////////////***5***////////////
+  //Make a function that adds every health punctuation 
+  //in a Pokemon array and returns the total amount
+
+const sumTotal = pokemonArray.map(item=>{
+  return item.health
+})
+const sum = sumTotal.reduce((accumulator, currentValue) => {
+  return accumulator + currentValue;
+},0);
+console.log(sum);
+
+/*const sum2 = sumTotal.reduce((accumulator, currentValue) => accumulator + currentValue);
+console.log(sum2);*/
+
+
+///////////////////////////***6***//////////////////
+/*Make a new function that chains the functions in 
+points 2 and 3, to return the Pokemon with the highest
+attack of a certain specie.*/
+
+
+const mapedhightest = pokemonArray.map(item=>{
+  return item.specie === 'wind'
+  })
+  console.log(mapedhightest)
+
+  const reducedhighest = mapedhightest.reduce((acc, curr)=>{
+  return 
+},0)
+console.log(reducedhighest)
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/***EXERCICES FROM MATERIAL****//////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////***MAP***////////////////////////////////////////////////////////////////////////////
+// Given the following array, create a second array with the result of getting the 
+//power of each number by itself.
+
+const numberarray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+const mapedarr = numberarray.map(cur=>{
+  return cur ** cur
+ //return Math.pow(cur, cur)
+});
+console.log(mapedarr)
+//////////////////////////////////////////////////////////////////
+//Given the following array, create a second array 
+//that uses each one of the words to form the sentences seen below.
+
+const foodList = ['Pizza', 'Ramen', 'Paella', 'Chuletón'];
+
+const mapedFood = foodList.map(ite=>{
+
+  switch(ite){
+    case 'Pizza':
+    return `Since I'm Italian, I love eating ${ite}`;
+    case 'Ramen':
+      return `Since I'm Japanese, I love eating ${ite}`;
+    case 'Paella':
+    return `Since I'm Valencia, I love eating ${ite}`;
+    default: 
+    return `Although I don't eat meat, ${ite} is certainly tasty`;
+  }
+})
+console.log(mapedFood)
+//////////////////****objects' properties*****//////////////////////////////////////
+
+const mfrStaff = [
+  {  name: 'Andrea',    role: 'coordinator',   hobbies: ['sing', 'watch movies']   },
+  {  name: 'Xavi',      role: 'teacher',       hobbies: ['read', 'code']           },
+  {  name: 'Ricardo',   role: 'teacher',       hobbies: ['read', 'garden']         },
+  {  name: 'Teresa',    role: 'teacher',       hobbies: ['travel', 'watch series'] },
+  {  name: ' Miguel',   role: 'coordinator',   hobbies: ['travel', 'build robots'] }
+];
+
+const mapedmfrStaff = mfrStaff.map(ele=>{
+  let newarray = `${ele.name} is a ${ele.role} and they like to ${ele.hobbies[0]} and  ${ele.hobbies[1]}`;
+  return newarray;
+})
+console.log(mapedmfrStaff)
+/////////////////////////////*****Filter exercises******/////////////////////////////////////////////////////////////
+const numbersarr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const filtredNumbres = numbersarr.filter(ele=>{
+    return ele % 2 === 0;
+})
+console.log(filtredNumbres)
+/////////////////////////////////////////////////////////////////////
+const foodLista = [  
+  {  name: 'Tempeh',                isVeggie: true   },
+  {  name: 'Cheesbacon burguer',    isVeggie: false  },
+  {  name: 'Beyond meat burguer',   isVeggie: true   },
+  {  name: 'Chuletón',              isVeggie: false  }
+];
+
+
+const filteredList = foodLista.filter(el=>{
+  return el.isVeggie === true;
+})
+const mapedList = filteredList.map(elem=>{
+  return `Nothing like a good ${elem.name} for dinner!`;
+})
+console.log(mapedList)
+
+/*const mapedLis = filteredList.map(el=>{
+  return el.isVeggie === true? `Nothing like a good ${el.name} for dinner!` : false;
+})
+console.log(mapedList)*/
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+
+const inventory = [  
+  {  name: 'Book',                          price: 10   },
+  {  name: 'Burguer Menu',                  price: 5    },
+  {  name: 'Bike',                          price: 300  },
+  {  name: 'Programming course license',    price: 155  }
+];
+
+const filtredInventory = inventory.filter(eleme=>{
+  return (eleme.price < 300)
+})
+const mappedInventory = filtredInventory.map(el=>{
+  return el.name
+})
+console.log(mappedInventory)
+//////////////////////////******Reduce exercises*******///////////////////////////////////////////////////////////////////////////////////////////
+  const numbersList = [45, 5, 1, 23, 32];
+
+const reducednumbersList = numbersList.reduce((acc, curr)=>{
+  console.log(acc)
+  return acc * curr
+})
+console.log(reducednumbersList)
+//////////////////////////////////////////////////////////
+const sentenceElements = [  'My',  'name',  'is', 'Abdellatif Hajji',  'and',  'I',  'love',  'javascript'];
+
+const concatenateElements = sentenceElements.reduce((accum, curre)=>{
+  return accum+' ' + curre;
+})
+console.log(concatenateElements)
+////////////////////////////////////////////////////////////
+/*Given the following array, get the total amount of those products that belong to the category of code*/
+
+const booksList = [  
+{    name: 'You don\'t know JS',    author: 'Kyle Sympson',        price: 15,    category: 'code'   },
+{    name: 'The handmaids tale',    author: 'Margaret Atwood',     price: 18,    category: 'novel'  },
+{    name: 'Game of Thrones',       author: 'George R. Martin',    price: 32,    category: 'Fantasy'},
+{    name: 'Eloquent Javascript',   author: 'Marijn Haverbeke',    price: 40,    category: 'code'   }
+];
+
+/*const filtredfun = booksList.filter(item=> item.category === 'code')
+const reduceFiltredfun = filtredfun.reduce((acc, cur)=>{
+  return acc.price + cur.price;
+})
+console.log(reduceFiltredfun)*/
+
+const reducedBookList = booksList.reduce((acc, curr)=>{
+  console.log(acc)
+  return curr.category === 'code'? acc + curr.price :acc;
+},0)
+console.log(reducedBookList)
+
+</script>
+
+
+</html>

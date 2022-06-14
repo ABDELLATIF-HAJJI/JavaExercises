@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" main_div="IE=edge">
+    <meta name="viewport" main_div="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #main_div{
+            width: 12em;
+            min-height: 10em;
+            background-color: rgb(228, 238, 238);
+            margin: auto;
+            text-align: center;
+        }
+        .options{
+            margin-left: 8px;
+            margin-top: 1px;
+        }
+        .selectImg{
+            margin-left: 30px;
+        }
+        #carts{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 20em;
+            margin: auto;
+        }
+        .dataContainer{
+            margin-bottom: 1.5em;
+            margin-right: 2%;
+        }
+        .dataImg{
+            background-color:rgb(230, 227, 240);
+            width: 5em;
+            height: 5em;
+        }
+        .dataName{
+            font-size: 8px;
+            font-weight: bold;
+            margin:5px 0px 4px 5px;
+            color: red ;
+        }
+    </style>
+</head>
+<body>
+    <div id="main_div">
+        <h1 class="options"></h1>
+        <div class="dataContainer"></div>
+    </div>
+    <hr>
+    <section id="carts">
+    </section>
+    <script>
+        //old way to fetch
+
+    let elements = []
+    fetch ( "https://hp-api-marcosmarp.herokuapp.com/api/characters" )
+    .then ( function (response) {
+        return response.json ( ) ;
+    })
+    .then (function (data) {
+        elements = data;
+        print(data)
+    })
+
+    const selectNames = document.querySelector('.options')
+    const dataContainer = document.querySelector('.dataContainer')
+        
+    function print(data){
+        selectNames.innerHTML = 
+            `<select class = "characterSelect" name="select-character">
+                <option class="character-option">
+               ${
+                data.map(actorName =>`<option>${actorName.name}</option>`)
+                }
+                <option>
+            </select>`;
+        const characterSelect = document.querySelector('.characterSelect');
+
+        characterSelect.addEventListener("change", () => {
+            for (var i = 0; i < elements.length; i++) {
+                let itemSelection = document.createElement("option");
+                itemSelection.value = elements[i].name;
+                itemSelection.id = elements[i].id;
+                itemSelection.innerHTML = elements[i].name;
+                dataContainer.appendChild(itemSelection);
+            }
+            let characterSelected = event.target.value;
+            let character = elements.filter( (item) => item.name === characterSelected);
+            dataContainer.innerHTML = `
+            <img class="dataImg" src=${character[0].image}>
+            <p class="dataName">${character[0].name}</p> `;
+        });
+    }
+
+        
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //new way to fetch
+        const api = "https://hp-api-marcosmarp.herokuapp.com/api/characters";
+
+        async function getData() {
+            const response = await fetch (api)
+            const data = await response.json ( )
+            printData(data)
+        }
+        getData()
+
+        function printData(data){
+            for(let i=0; i<data.length; i++) {
+                // console.log(data)
+                 //printData(i)
+                let carts = document.querySelector('#carts')
+                const container = document.createElement('div');
+                container.className= 'dataContainer'
+                carts.appendChild(container)
+                const img = document.createElement('img');
+                img.className= 'dataImg'
+                container.appendChild(img)
+                img.src = data[i].image;
+                const name = document.createElement('p');
+                name.className= 'dataName'
+                container.appendChild(name)
+                name.innerHTML = data[i].name;
+            }
+        }
+    </script>
+</body>
+</html>

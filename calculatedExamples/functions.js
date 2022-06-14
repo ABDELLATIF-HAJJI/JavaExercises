@@ -50,7 +50,17 @@ subButton.addEventListener('click',(e)=>{
         e.preventDefault()
     }
 })
-
+inputAge.addEventListener('keyup',(e)=>{
+   let input = inputAge.value;
+    if (input === ''){
+        screenDays.innerHTML= '';
+        screenHours.innerHTML= '';
+        screenMinutes.innerHTML= '';
+    }
+    else {
+        e.preventDefault()
+    }
+})
 //second Calculator///////////////////////////////////////////////////////
 
 const screenTotal = document.getElementById ('screenResulats');
@@ -93,7 +103,6 @@ function Fernitures(price, taxe, other){
     let mainResult = firstResult + other + ' $';
     return mainResult
 }
-
 const  tele = Fernitures(180,2,1)
 document.getElementById('priceTv').innerHTML=tele;
 const frige = Fernitures(220,6,10)
